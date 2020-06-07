@@ -1,8 +1,7 @@
-import http from 'http';
-const PORT = 3333;
-function listener(req: http.IncomingMessage, res: http.ServerResponse) {}
+import { insertion_sort } from './algorithms/sort/insertion_sort';
 
-const server: http.Server = http.createServer(listener);
-server.listen(PORT, () => {
-    console.log(`Server is listening on ${PORT}`);
-});
+const arr: Array<number> = [5, 2, 4, 6, 1, 3];
+
+console.dir(arr);
+insertion_sort(arr, (a, b) => b - a);
+console.dir(arr);
