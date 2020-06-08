@@ -1,4 +1,4 @@
-export function selection_sort<T>(array: Array<T>, comparator: (a: T, b: T) => number): void {
+export function selection_sort<T>(array: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
     function swap<T>(array: Array<T>, aIndex: number, bIndex: number) {
         const temp = array[aIndex];
         array[aIndex] = array[bIndex];
@@ -19,4 +19,5 @@ export function selection_sort<T>(array: Array<T>, comparator: (a: T, b: T) => n
             changed = false;
         }
     }
+    return array;
 }
