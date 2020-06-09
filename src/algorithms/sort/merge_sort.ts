@@ -1,4 +1,11 @@
-import { selection_sort } from './selection_sort';
+import './selection_sort';
+
+export {};
+declare global {
+    interface Array<T> {
+        merge_sort(array: Array<T>, comparator: (a: T, b: T) => number): Array<T>;
+    }
+}
 
 function merge<T>(to: Array<T>, left: Array<T>, right: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
     let left_index = 0;
@@ -24,15 +31,16 @@ function merge<T>(to: Array<T>, left: Array<T>, right: Array<T>, comparator: (a:
     return to;
 }
 
-export function merge_sort<T>(array: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
+Array.prototype.merge_sort = function <T>(array: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
     if (array.length < 3) {
-        return selection_sort(array, comparator);
+        return array.selection_sort(comparator);
     }
+
     const len = Math.floor(array.length / 2);
     return merge(
         array,
-        merge_sort(array.slice(0, len), comparator),
-        merge_sort(array.slice(len, array.length), comparator),
+        array.merge_sort(array.slice(0, len), comparator),
+        array.merge_sort(array.slice(len, array.length), comparator),
         comparator,
     );
-}
+};

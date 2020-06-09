@@ -1,23 +1,31 @@
-export function selection_sort<T>(array: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
-    function swap<T>(array: Array<T>, aIndex: number, bIndex: number) {
-        const temp = array[aIndex];
-        array[aIndex] = array[bIndex];
-        array[bIndex] = temp;
+export {};
+declare global {
+    interface Array<T> {
+        selection_sort(comparator: (a: T, b: T) => number): Array<T>;
+        swap(aIndex: number, bIndex: number): void;
     }
+}
 
-    for (let i = 0; i < array.length; i++) {
+Array.prototype.swap = function <T>(aIndex: number, bIndex: number) {
+    const temp = this[aIndex];
+    this[aIndex] = this[bIndex];
+    this[bIndex] = temp;
+};
+
+Array.prototype.selection_sort = function <T>(comparator: (a: T, b: T) => number): Array<T> {
+    for (let i = 0; i < this.length; i++) {
         let maxIndex = i;
         let changed = false;
-        for (let j = i + 1; j < array.length; j++) {
-            if (comparator(array[j], array[maxIndex]) <= 0) {
+        for (let j = i + 1; j < this.length; j++) {
+            if (comparator(this[j], this[maxIndex]) <= 0) {
                 maxIndex = j;
                 changed = true;
             }
         }
         if (changed) {
-            swap(array, i, maxIndex);
+            this.swap(i, maxIndex);
             changed = false;
         }
     }
-    return array;
-}
+    return this;
+};

@@ -1,13 +1,20 @@
-export function insertion_sort<T>(array: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
-    for (let j = 1; j < array.length; j++) {
-        const temp = array[j];
+export {};
+declare global {
+    interface Array<T> {
+        insertion_sort(comparator: (a: T, b: T) => number): Array<T>;
+    }
+}
+
+Array.prototype.insertion_sort = function <T>(comparator: (a: T, b: T) => number): Array<T> {
+    for (let j = 1; j < this.length; j++) {
+        const temp = this[j];
         let i = j - 1;
 
-        while (i > -1 && comparator(array[i], temp) >= 0) {
-            array[i + 1] = array[i];
+        while (i > -1 && comparator(this[i], temp) >= 0) {
+            this[i + 1] = this[i];
             i--;
         }
-        array[i + 1] = temp;
+        this[i + 1] = temp;
     }
-    return array;
-}
+    return this;
+};
