@@ -1,4 +1,4 @@
-export function insertion_sort<T>(array: Array<T>, comparator: (a: T, b: T) => number): void {
+export function insertion_sort<T>(array: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
     for (let j = 1; j < array.length; j++) {
         const temp = array[j];
         let i = j - 1;
@@ -9,4 +9,5 @@ export function insertion_sort<T>(array: Array<T>, comparator: (a: T, b: T) => n
         }
         array[i + 1] = temp;
     }
+    return array;
 }

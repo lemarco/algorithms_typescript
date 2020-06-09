@@ -6,7 +6,7 @@ function merge<T>(to: Array<T>, left: Array<T>, right: Array<T>, comparator: (a:
 
     for (let i = 0; i < to.length; i++) {
         if (left[left_index] !== undefined && right[right_index] !== undefined) {
-            if (comparator(left[left_index], right[right_index]) >= 0) {
+            if (comparator(left[left_index], right[right_index]) <= 0) {
                 to[i] = left[left_index];
                 left_index++;
             } else {

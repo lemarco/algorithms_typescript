@@ -9,7 +9,7 @@ export function selection_sort<T>(array: Array<T>, comparator: (a: T, b: T) => n
         let maxIndex = i;
         let changed = false;
         for (let j = i + 1; j < array.length; j++) {
-            if (comparator(array[j], array[maxIndex]) >= 0) {
+            if (comparator(array[j], array[maxIndex]) <= 0) {
                 maxIndex = j;
                 changed = true;
             }
