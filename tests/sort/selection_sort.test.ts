@@ -1,5 +1,5 @@
 import '../../src/algorithms/sort/selection_sort';
-import { ascending_lambda, discending_lambda } from './sorting_lamdas';
+import { ascending_lambda, discending_lambda } from '../../src/algorithms/util/ascending_discending';
 const array: Array<number> = [5, 2, 4, 6, 1, 3, 0];
 
 test('discending order test', () => {
