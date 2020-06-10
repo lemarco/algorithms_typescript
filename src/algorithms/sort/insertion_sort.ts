@@ -1,5 +1,3 @@
-import { ascending_lambda } from '../util/ascending_discending';
-
 export {};
 declare global {
     interface Array<T> {
@@ -7,7 +5,7 @@ declare global {
     }
 }
 
-Array.prototype.insertion_sort = function <T>(comparator: (a: T, b: T) => number = ascending_lambda): Array<T> {
+Array.prototype.insertion_sort = function <T>(comparator: (a: T, b: T) => number): Array<T> {
     for (let j = 1; j < this.length; j++) {
         const temp = this[j];
         let i = j - 1;

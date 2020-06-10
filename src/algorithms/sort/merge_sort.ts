@@ -1,5 +1,5 @@
 import './selection_sort';
-import { ascending_lambda } from '../util/ascending_discending';
+
 export {};
 declare global {
     interface Array<T> {
@@ -31,10 +31,7 @@ function merge<T>(to: Array<T>, left: Array<T>, right: Array<T>, comparator: (a:
     return to;
 }
 
-Array.prototype.merge_sort = function <T>(
-    array: Array<T>,
-    comparator: (a: T, b: T) => number = ascending_lambda,
-): Array<T> {
+Array.prototype.merge_sort = function <T>(array: Array<T>, comparator: (a: T, b: T) => number): Array<T> {
     if (array.length < 3) {
         return array.selection_sort(comparator);
     }
