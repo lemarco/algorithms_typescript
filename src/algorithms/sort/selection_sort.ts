@@ -1,3 +1,4 @@
+import '../util/swap';
 export {};
 declare global {
     interface Array<T> {
@@ -5,12 +6,6 @@ declare global {
         swap(aIndex: number, bIndex: number): void;
     }
 }
-
-Array.prototype.swap = function <T>(aIndex: number, bIndex: number) {
-    const temp = this[aIndex];
-    this[aIndex] = this[bIndex];
-    this[bIndex] = temp;
-};
 
 Array.prototype.selection_sort = function <T>(comparator: (a: T, b: T) => number): Array<T> {
     for (let i = 0; i < this.length; i++) {
